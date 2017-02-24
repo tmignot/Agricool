@@ -47,7 +47,10 @@ abstract class AControllerREST implements IControllerREST {
 
 	abstract public function showItem($request, $response, $args);
 	protected function _showItem($request, $response, $id, $query = [], $fields = []) {
-		$query['_id'] = new MongoDB\BSON\ObjectId($id);
+		try {	$query['_id'] = new MongoDB\BSON\ObjectId($id); }
+		catch (MongoDB\Driver\Exception\InvalidArgumentException $e) {
+			return $response->withStatus(404); 
+		}
 		$request_query = $request->getParsedBodyParam('query');
 		$request_fields = $request->getParsedBodyParam('fields');
 		$full_query = array_merge((array)$request_query, $query);

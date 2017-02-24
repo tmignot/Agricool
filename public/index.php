@@ -34,9 +34,15 @@ $app->add(function($request, $response, $next) use ($app) {
 
 /* Cooltainers routes group */
 $app->group('/cooltainers', function () {
-	$this->get('', '\CooltainersController:listItems');
+
+	//List
+	$this->get('[/]', '\CooltainersController:listItems');
+
+	//Show
 	$this->get('/{id}', '\CooltainersController:showItem');
-	$this->post('', '\CooltainersController:createItem');
+
+	//Create
+	$this->post('[/]', '\CooltainersController:createItem');
 });
 
 /* Obviously : run! */
