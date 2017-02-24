@@ -1,4 +1,4 @@
-# Agricool
+# Agricool Cooltainer API (Unix & GNU/Linux instructions)
 
 ### Install  :
 
@@ -40,5 +40,10 @@ _with required keys:_
 * **name** (the name a the cooltainer)
 
 * **ip** (ip of the new container, maybe to start comunicating with it)
+
+##### Note: in all case you can send curl's output to json pretty print by adding `| json_pp` at the end of the commands
+
+_example:_
+>$ curl -X GET -d "key=**[secret]**" http://localhost:8000/cooltainers | json_pp
 
 _Lots of values are meant to be updated by the cooltainer itself, or eventually retrieved from the cooltainer by the server, such as sensors values or the status. Such values are not accessible for writing._
